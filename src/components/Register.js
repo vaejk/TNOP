@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Icon, Input, Checkbox, Button, Divider } from 'antd';
 import '../scss/Register.scss';
 import 'antd/dist/antd.css'
+import Head from './Head'
 
 class Register extends Component {
     constructor(props) {
@@ -17,6 +18,8 @@ class Register extends Component {
         console.log(this.props)
         const { getFieldDecorator } = this.props.form;
         return (
+            <>
+            <Head></Head>
             <div id="register">
                 <h2>快速注册</h2>
                 <p>若未创建账号，将自动创建</p>
@@ -50,6 +53,7 @@ class Register extends Component {
                 <p className="register2">已有账号？直接登录</p>
                 <p className="agreed">登录即代表您已经同意<span className="agreement">用户使用协议</span></p>
             </div>
+            </>
         )
     }
 }

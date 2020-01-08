@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PublicFoot from './PublicFoot.js';
 import { Pagination } from 'antd';
 import 'antd/dist/antd.css';
+import Head from './Head'
 import '../scss/activity.scss';
 
 class Activity extends Component {
@@ -159,6 +160,8 @@ class Activity extends Component {
     render() {
         let { showlist } = this.state;
         return (
+            <>
+            <Head></Head>
             <div style={{ backgroundColor: "#f5f5f5", overflow: "hidden" }} >
                 <p className="notice">
                     <a href="###">轻之文库整改公告</a>
@@ -185,6 +188,7 @@ class Activity extends Component {
                 </div>
                 <PublicFoot />
             </ div >
+            </>
         )
     }
 }

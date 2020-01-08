@@ -6,7 +6,8 @@
     margin: 0 auto; 
 }
 .nav{
-    margin: vw(20) 0 vw(24) 0;
+    padding: vw(20) 0 vw(24) 0;
+    background: #fff;
     .w{
         display: flex;
         justify-content: space-between;
@@ -19,6 +20,7 @@
     }
     li{
         flex: 1;
+        font-weight: 400 !important;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -26,10 +28,11 @@
 }
 .top-line{
     height: vw(35);
+    background: #fff;
     line-height: vw(35);
     font-size: vw(12);
     display: flex;
-    margin-bottom: vw(20);
+    padding-bottom: vw(20);
     align-items: center;
     .w{
         
@@ -41,6 +44,7 @@
     }
 }
 .testimonial{
+    background: #fff;
     border-top: vw(1) solid #f6f7f8;
     .w{
         .top{
@@ -115,6 +119,7 @@
 }
 .fenglei{
     position: relative;
+    background: #fff;
     .w{   
         .tb{
             position: absolute;
@@ -189,11 +194,11 @@
 }
 #head{
     width: 100%;
-    height: vw(50);
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    background: #fff;
     overflow: hidden;
     transition: all 0.3s;
 }
@@ -303,11 +308,13 @@ h1{
     }
     .head{
         padding: vw(7.5) vw(15);
+        margin-bottom: 0;
     }
     .seek{
         height: vw(68);
         display: flex;
         align-items: center;
+        margin-bottom: 0;
     }
     .footer{
         height: vw(177.5);

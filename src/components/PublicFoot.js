@@ -46,7 +46,7 @@ const PublicFoot = () => {
                     <li>游戏合作</li>
                     <li>少女咖啡枪</li>
                 </ul></div>
-            <div><img src="./images/logo_gray.png" /></div>
+            <div><img src="./images/logo_gray.png" alt={'1'} /></div>
             <div className="copy">Copyright 2019 轻之文库. All Rights Reserved. / 沪ICP备15020557号-1</div>
             <div className="cooperation">
                 <ul>

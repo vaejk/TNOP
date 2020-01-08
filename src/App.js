@@ -2,23 +2,29 @@ import React from 'react';
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Index from './components/index/index'
+import Sign from './components/Sign'
+import Activity from './components/Activity'
+import NewWriter from './components/NewWriter'
+import Register from './components/Register'
+import Login from './components/Login'
+import PageList from './components/PageList'
 function App() {
   return (
     <div className="App">
       <Switch>
         {/* 路由配置,当浏览器路径匹配path时,渲染component组件 */}
         <Route path='/home' component={Index} />
-        {/* /discover/phone */}
+        <Route path='/sign' component={Sign} />
+        <Route path='/activity' component={Activity} />
+        <Route path='/new' component={NewWriter} />
+        <Route path='/reg' component={Register} />
+        <Route path='/login' component={Login} />
+        <Route path='/pageList' component={PageList} />
         <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
-
-        {/* "/" 跳转到 "/home" */}
         <Redirect from="/" to="/home" exact />
-        {/* 404 */}
         <Redirect to="/notfound" />
-        {/* <Route path="/" component={Home}/> */}
       </Switch>
     </div>
   );
 }
-
 export default App;

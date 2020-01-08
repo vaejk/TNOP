@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Icon, Button, Menu, Pagination } from 'antd';
-
+import Head from './Head'
 import '../scss/PageList.scss';
 import 'antd/dist/antd.css';
 import PublicFoot from './PublicFoot.js';
@@ -265,6 +265,8 @@ class PageList extends Component {
 
     render() {
         return (
+            <>
+            <Head></Head>
             <div>
                 <div id="pagelist" >
                     <h2>
@@ -320,6 +322,7 @@ class PageList extends Component {
                 </div>
                 <PublicFoot />
             </div>
+            </>
         )
     }
 }

@@ -5,9 +5,12 @@
 *{
     text-align: left;
 }
-
+html,body{
+    background: #fff !important;
+}
 #login{
     padding: 0 vw(38);
+    background: #fff;
     h2{
         margin: 0;
         font-weight: 900;

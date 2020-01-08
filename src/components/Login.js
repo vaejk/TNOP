@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Icon, Input, Checkbox, Button, Divider } from 'antd';
 import '../scss/Login.scss';
 import 'antd/dist/antd.css'
+import Head from './Head'
 
 class Login extends Component {
     constructor(props) {
@@ -17,6 +18,8 @@ class Login extends Component {
         console.log(this.props)
         const { getFieldDecorator } = this.props.form;
         return (
+            <>
+            <Head></Head>
             <div id="login">
                 <h2>快捷登录</h2>
                 <p>若未创建账号，将自动创建</p>
@@ -52,6 +55,7 @@ class Login extends Component {
                 <Divider>  OR  </Divider>
                 <p className="icons"><Icon type="qq" className="icon" /><Icon type="wechat" className="icon" /><Icon type="weibo" className="icon" /></p>
             </div>
+            </>
         )
     }
 }

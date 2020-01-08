@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { withRouter } from 'react-router-dom';
 class Head extends Component {
   constructor() {
     super()
@@ -7,8 +7,11 @@ class Head extends Component {
       defaultHeight: true
     }
     this.unfold = this.unfold.bind(this)
+    this.go = this.go.bind(this)
   }
-
+  go(path) {
+    this.props.history.push(path)
+  }
   unfold() {
     this.setState({
       defaultHeight: !this.state.defaultHeight
@@ -16,12 +19,12 @@ class Head extends Component {
   }
   render() {
     let styleObj = {
-      height: this.state.defaultHeight ? '13.3vw' : '117.2vw'
+      height: this.state.defaultHeight ? '13vw' : '117.2vw'
     }
     return (
       <>
         <div id={'head'} style={styleObj}>
-          <h1>
+          <h1 onClick={this.go.bind(null,'/home')}>
             轻之文库
           </h1>
           <div className={'headright'} onClick={this.unfold}>
@@ -41,8 +44,8 @@ class Head extends Component {
             </li>
             <li className={'footer'}>
               <p><i className={'fan'}></i>简繁切换</p>
-              <p>登录</p>
-              <p>注册</p>
+              <p onClick={this.go.bind(null,'/login')}>登录</p>
+              <p onClick={this.go.bind(null,'/reg')}>注册</p>
               <button className={'tb'}><i className={'tougao'}></i>投稿</button>
             </li>
           </ul>
@@ -51,4 +54,5 @@ class Head extends Component {
     )
   }
 }
+Head = withRouter(Head)
 export default Head;
