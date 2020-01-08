@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Index from './component/index'
+import Index from './components/index/index'
 function App() {
   return (
     <div className="App">

@@ -1,5 +1,5 @@
 import React from 'react'
-import Head from '../../component/Head'
+import Head from '../Head'
 import Banner from './banner'
 const index = () => {
     return (

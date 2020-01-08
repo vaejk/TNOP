@@ -222,7 +222,7 @@
 
 h1 {
   text-indent: 2666.4vw;
-  background: url(../../images/logo.4331677.png) no-repeat;
+  background: url(../images/logo.4331677.png) no-repeat;
   background-size: 90%;
   text-indent: -9999px;
   width: 32vw;
@@ -285,7 +285,7 @@ h1 {
 }
 
 .yc li .input .seekxtb {
-  background: url(../../images/seek.png) no-repeat center;
+  background: url(../images/seek.png) no-repeat center;
   width: 9.06667vw;
   height: 9.06667vw;
   margin: 0;
@@ -297,7 +297,7 @@ h1 {
 }
 
 .yc li i {
-  background: url(../../images/icon-new.656691a.png) center no-repeat;
+  background: url(../images/icon-new.656691a.png) center no-repeat;
   display: inline-block;
   width: 8.53333vw;
   height: 8.53333vw;
@@ -305,7 +305,7 @@ h1 {
 }
 
 .yc li .fan {
-  background: url(../../images/fan.png) no-repeat;
+  background: url(../images/fan.png) no-repeat;
   width: 6.66667vw;
   height: 5.33333vw;
   margin: 0;
@@ -313,7 +313,7 @@ h1 {
 }
 
 .yc li .tougao {
-  background: url(../../images/pen.cb7085e.png) no-repeat center;
+  background: url(../images/pen.cb7085e.png) no-repeat center;
   background-size: 46%;
 }
 
