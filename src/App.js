@@ -8,6 +8,8 @@ import NewWriter from './components/NewWriter'
 import Register from './components/Register'
 import Login from './components/Login'
 import PageList from './components/PageList'
+import Personal from './components/Personal'
+import LoginOut from './components/LoginOut'
 function App() {
   return (
     <div className="App">
@@ -20,6 +22,8 @@ function App() {
         <Route path='/reg' component={Register} />
         <Route path='/login' component={Login} />
         <Route path='/pageList' component={PageList} />
+        <Route path='/personal' component={Personal} />
+        <Route path='/loginout' component={LoginOut} />
         <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
         <Redirect from="/" to="/home" exact />
         <Redirect to="/notfound" />

@@ -3,6 +3,9 @@ import { Button, Input, DatePicker, Select, Option, Menu, Icon } from 'antd';
 import '../scss/Personal.scss';
 import 'antd/dist/antd.css';
 import PublicFoot from './PublicFoot.js'
+import Head from './Head.js';
+
+import cookie from 'react-cookies';
 
 class Personal extends Component {
     constructor() {
@@ -53,8 +56,18 @@ class Personal extends Component {
         }
     }
 
+    componentDidMount() {
+        let result = cookie.load('user');
+        if (result) {
+            this.setState({
+                isLogin: true
+            })
+        }
+    }
+
     render() {
-        return (
+        return (<>
+            <Head />
             <div id="personal">
                 <h2><span className="square"></span>用户资料</h2>
                 <div className="head">
@@ -174,7 +187,7 @@ class Personal extends Component {
                     </Menu.Item>*/}
                 </Menu>
                 <PublicFoot />
-            </div>
+            </div></>
         )
     }
 }
