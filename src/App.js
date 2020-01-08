@@ -1,37 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-// import './scss/base.css';
-// import Login from './components/Login.js';
-// import Register from './components/Register.js';
-// import PublicFoot from './components/PublicFoot.js';
-// import Personal from './components/Personal.js';
-// import PageList from './components/PageList.js';
-// import Activity from './components/Activity.js';
-// import NewWriter from './components/NewWriter.js';
-// import Sign from './components/Sign.js';
-// import Content from './components/Content.js';
-// import Detail from './components/Detail.js';
-import LoginOut from './components/LoginOut.js';
-
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Index from './component/index'
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <LoginOut />
+      <Switch>
+        {/* 路由配置,当浏览器路径匹配path时,渲染component组件 */}
+        <Route path='/home' component={Index} />
+        {/* /discover/phone */}
+        <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
+
+        {/* "/" 跳转到 "/home" */}
+        <Redirect from="/" to="/home" exact />
+        {/* 404 */}
+        <Redirect to="/notfound" />
+        {/* <Route path="/" component={Home}/> */}
+      </Switch>
     </div>
   );
 }
