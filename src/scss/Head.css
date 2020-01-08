@@ -261,7 +261,6 @@ h1 {
 }
 
 .yc {
-  height: 104.4vw;
   width: 100%;
   border-top: 0.26667vw solid #eeeeee;
 }
@@ -357,8 +356,4 @@ h1 {
   display: flex;
   align-items: center;
   margin-bottom: 0;
-}
-
-.yc .footer {
-  height: 47.33333vw;
 }
