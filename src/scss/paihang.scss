@@ -4,14 +4,15 @@
 .fentou{
     position: fixed;
     display: flex;
-    z-index: 99;
+    z-index: 5;
     width: 100%;
     font-size: vw(15);
     color: #666;
-    height: vw(45);
+    height: vw(48);
     background: #fff;
     border-top: vw(1) solid rgb(255,255,255);
     border-bottom: vw(1) solid rgb(255,255,255);
+    top: vw(48.75);
     li{
         flex: 1;
         display: flex;
@@ -19,6 +20,10 @@
         justify-content: center;
         flex-direction: column;
         position: relative;
+        margin-bottom: 0;
+        a{
+            font-size: vw(15);
+        }
         i{
            border-bottom: vw(3) solid #51caac;
            display: inline-block;
@@ -30,16 +35,19 @@
 }
 .content{
     display: flex;
-    padding-top: vw(47);
+    padding-top: vw(97);
+    background: #f6f6f6;
     .cont-left{
         background: #fff;
         position: fixed;
         left: 0;
+        overflow: auto;
         height: 100%;
         li{
             width: vw(62);
             height: vw(60);
             border-left: vw(3) solid #51caac;
+        font-weight: 500 !important;
             font-size: 13px;
             line-height: vw(60);
             text-align: center;
@@ -50,10 +58,13 @@
 .cont-right{
     position: relative;
     margin-left: vw(75);
+    background-color: #f6f6f6;
     li{
         display: flex;  
         margin-top: vw(17);
         width: vw(285);
+        font-weight: 400 !important;
+        color: #666 !important;
         img{
             width: vw(60);
         }
@@ -68,6 +79,7 @@
         p:nth-child(1){
             display: flex;
             justify-content: space-between;
+             background-color: #f6f6f6;
             font-size: vw(13);
             .greng{
                 color: #51caac;

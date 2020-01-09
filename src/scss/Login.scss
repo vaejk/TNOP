@@ -38,12 +38,16 @@ html,body{
             }
         }
     }
-
+    .log{
+        display: flex;
+        justify-content: space-between;
+    }
     p{
         font-size: vw(12);
         line-height: vw(12);
         margin-bottom: vw(14);
         color: #b3b3b3;
+     
     }
 
     .reg{
@@ -54,7 +58,7 @@ html,body{
     .loginbtn{
         width: 100%;
         height: vw(40);
-        background-color: #999;
+        background-color: #2ac9ad;
         color: #fff;
         margin-top: vw(33);
     }

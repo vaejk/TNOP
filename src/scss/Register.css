@@ -46,18 +46,18 @@
   font-weight: 900;
 }
 
-#register .loginbtn {
+#register .regbtn {
   width: 100%;
   height: 10.66667vw;
-  background-color: #999;
+  background-color: #2ac9ad;
   color: #fff;
-  margin-top: 33.6vw;
+  margin-top: 10.66667vw;
 }
 
 #register .register2 {
   text-align: center;
   color: #2ac9ad;
-  margin: 4.8vw 0 26.66667vw;
+  margin: 4.8vw 0 13.66667vw;
 }
 
 #register .agreed {

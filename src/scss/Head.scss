@@ -23,6 +23,7 @@
         font-weight: 400 !important;
         display: flex;
         flex-direction: column;
+        margin-bottom: 0;
         align-items: center;
     }
 }
@@ -80,6 +81,7 @@
             li{
                 display: flex;
                 height: vw(130);
+                margin-bottom: 0;
                 img{
                     width: vw(87);
                 }
@@ -198,6 +200,7 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    z-index: 99;
     background: #fff;
     overflow: hidden;
     transition: all 0.3s;

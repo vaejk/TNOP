@@ -25,6 +25,7 @@
   font-weight: 400 !important;
   display: flex;
   flex-direction: column;
+  margin-bottom: 0;
   align-items: center;
 }
 
@@ -92,6 +93,7 @@
 .testimonial .w .list li {
   display: flex;
   height: 34.66667vw;
+  margin-bottom: 0;
 }
 
 .testimonial .w .list li img {
@@ -220,6 +222,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  z-index: 99;
   background: #fff;
   overflow: hidden;
   transition: all 0.3s;

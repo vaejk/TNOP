@@ -1,14 +1,15 @@
 .fentou {
   position: fixed;
   display: flex;
-  z-index: 99;
+  z-index: 5;
   width: 100%;
   font-size: 4vw;
   color: #666;
-  height: 12vw;
+  height: 12.8vw;
   background: #fff;
   border-top: 0.26667vw solid white;
   border-bottom: 0.26667vw solid white;
+  top: 13vw;
 }
 
 .fentou li {
@@ -18,6 +19,11 @@
   justify-content: center;
   flex-direction: column;
   position: relative;
+  margin-bottom: 0;
+}
+
+.fentou li a {
+  font-size: 4vw;
 }
 
 .fentou li i {
@@ -30,13 +36,15 @@
 
 .content {
   display: flex;
-  padding-top: 12.53333vw;
+  padding-top: 25.86667vw;
+  background: #f6f6f6;
 }
 
 .content .cont-left {
   background: #fff;
   position: fixed;
   left: 0;
+  overflow: auto;
   height: 100%;
 }
 
@@ -44,6 +52,7 @@
   width: 16.53333vw;
   height: 16vw;
   border-left: 0.8vw solid #51caac;
+  font-weight: 500 !important;
   font-size: 13px;
   line-height: 16vw;
   text-align: center;
@@ -53,12 +62,15 @@
 .cont-right {
   position: relative;
   margin-left: 20vw;
+  background-color: #f6f6f6;
 }
 
 .cont-right li {
   display: flex;
   margin-top: 4.53333vw;
   width: 76vw;
+  font-weight: 400 !important;
+  color: #666 !important;
 }
 
 .cont-right li img {
@@ -78,6 +90,7 @@
 .cont-right div p:nth-child(1) {
   display: flex;
   justify-content: space-between;
+  background-color: #f6f6f6;
   font-size: 3.46667vw;
 }
 
