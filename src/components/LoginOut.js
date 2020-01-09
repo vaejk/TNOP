@@ -13,18 +13,21 @@ class LoginOut extends Component {
     }
 
     componentDidMount() {
-        let time = setInterval(() => {
+        this.time = setInterval(() => {
             let { count } = this.state;
             count -= 1;
             if (count === 0) {
-                // clearInterval(time);
-                console.log("jump")
+                this.props.history.push("/home")
             } else {
                 this.setState({
                     count
                 })
             }
         }, 1000)
+    }
+
+    componentWillUnmount() {
+        this.time = null;
     }
 
     render() {

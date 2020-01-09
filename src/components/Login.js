@@ -40,6 +40,7 @@ class Login extends Component {
                 } else {
                     cookie.save('user', mail, { expires: now })
                 }
+                this.props.history.push("/home")
             }
         }
     }

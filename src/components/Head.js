@@ -71,7 +71,7 @@ class Head extends Component {
                     <p><Icon type="mail" />系统通知</p>
                     <p><Icon type="mail" />作者通知</p>
                     <p><Icon type="mail" />投稿管理</p>
-                    <p><Icon type="loginout" onClick={this.loginout} />退出登录</p>
+                    <p onClick={this.loginout}><Icon type="loginout" />退出登录</p>
                     <p><Icon type="appstore" />收藏夹</p>
                   </>
                   :
