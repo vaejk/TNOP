@@ -10,12 +10,14 @@ import Login from './components/Login'
 import PageList from './components/PageList'
 import Personal from './components/Personal'
 import LoginOut from './components/LoginOut'
+import Rankinglist from './components/Rankinglist'
 function App() {
   return (
     <div className="App">
       <Switch>
         {/* 路由配置,当浏览器路径匹配path时,渲染component组件 */}
         <Route path='/home' component={Index} />
+        <Route path='/rankinglist' component={Rankinglist} />
         <Route path='/sign' component={Sign} />
         <Route path='/activity' component={Activity} />
         <Route path='/new' component={NewWriter} />

@@ -40,6 +40,11 @@ html, body {
   margin-bottom: 2.66667vw;
 }
 
+#login .log {
+  display: flex;
+  justify-content: space-between;
+}
+
 #login p {
   font-size: 3.2vw;
   line-height: 3.2vw;
@@ -55,7 +60,7 @@ html, body {
 #login .loginbtn {
   width: 100%;
   height: 10.66667vw;
-  background-color: #999;
+  background-color: #2ac9ad;
   color: #fff;
   margin-top: 8.8vw;
 }

@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import 'antd/es/date-picker/style/css'
 import { HashRouter } from 'react-router-dom';
 import './scss/Head.scss'
+import './scss/paihang.scss'
 import './scss/base.css'
 import 'antd/dist/antd.css'
 render(
