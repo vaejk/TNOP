@@ -9,7 +9,20 @@
   background: #fff;
   border-top: 0.26667vw solid white;
   border-bottom: 0.26667vw solid white;
+  box-shadow: 3px 2px 5px 0 rgba(102, 102, 102, 0.15);
   top: 13vw;
+}
+
+.fentou .activity a {
+  color: #51caac;
+}
+
+.fentou .activity i {
+  border-bottom: 0.8vw solid #51caac;
+  display: inline-block;
+  width: 10.13333vw;
+  position: absolute;
+  bottom: -0.26667vw;
 }
 
 .fentou li {
@@ -19,19 +32,13 @@
   justify-content: center;
   flex-direction: column;
   position: relative;
+  font-weight: 500 !important;
   margin-bottom: 0;
 }
 
 .fentou li a {
   font-size: 4vw;
-}
-
-.fentou li i {
-  border-bottom: 0.8vw solid #51caac;
-  display: inline-block;
-  width: 10.13333vw;
-  position: absolute;
-  bottom: -0.26667vw;
+  color: #666;
 }
 
 .content {
@@ -48,10 +55,14 @@
   height: 100%;
 }
 
+.content .cont-left .checked {
+  border-left: 0.8vw solid #51caac;
+  background-color: #f6f6f6;
+}
+
 .content .cont-left li {
   width: 16.53333vw;
   height: 16vw;
-  border-left: 0.8vw solid #51caac;
   font-weight: 500 !important;
   font-size: 13px;
   line-height: 16vw;

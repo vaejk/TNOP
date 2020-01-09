@@ -1,38 +1,48 @@
 import React, { Component } from 'react'
 import Head from './Head'
+import { withRouter } from 'react-router-dom'
 class Rankinglist extends Component {
     constructor() {
         super()
         this.state = {
-            defaultHeight: true
+            actins: '周排行',
+            actins2: '重磅榜',
+            navs: [{ name: '周排行' }, { name: '月排行' }, { name: '新生排行' }],
+            nav2: [{ name: '重磅榜' }, { name: '佳作榜' }, { name: '月票榜' }, { name: '轻币榜' }, { name: '墨水榜' }, { name: '应援榜' }]
         }
+        this.actin = this.actin.bind(this)
+        this.actin2 = this.actin2.bind(this)
+    }
+    actin(xc) {
+        // this.props.history.push(path);
+        this.setState({
+            actins: xc
+        })
+    }
+    actin2(xc) {
+        this.setState({
+            actins2: xc
+        })
     }
     render() {
         return (
             <>
                 <Head></Head>
                 <ul className="fentou">
-                    <li>
-                        <a>周排行</a>
-                        <i></i>
-                    </li>
-                    <li>
-                        <a>月排行</a>
-                        <i></i>
-                    </li>
-                    <li>
-                        <a>新书排行</a>
-                        <i></i>
-                    </li>
+                    {this.state.navs.map(item => {
+                        return <li key={item.name} className={this.state.actins == item.name ? 'activity' : null} onClick={this.actin.bind(null, item.name)}>
+                            <a>{item.name}</a>
+                            <i></i>
+                        </li>
+                    })}
                 </ul>
                 <div className="content">
                     <ul className="cont-left">
-                        <li>重磅榜</li>
-                        <li>佳作榜</li>
-                        <li>月票榜</li>
-                        <li>轻币榜</li>
-                        <li>墨水榜</li>
-                        <li>应援榜</li>
+                        {this.state.nav2.map(item => {
+                            return <li key={item.name} className={this.state.actins2 == item.name ? 'checked' : null} onClick={this.actin2.bind(null, item.name)}>
+                                {item.name}
+                            </li>
+                        })}
                     </ul>
                     <ul className="cont-right">
                         <li>
@@ -104,4 +114,5 @@ class Rankinglist extends Component {
         )
     }
 }
+Rankinglist = withRouter(Rankinglist)
 export default Rankinglist;
