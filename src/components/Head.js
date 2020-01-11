@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import cookie from 'react-cookies';
-import { Icon } from 'antd';
+import { Icon, Input } from 'antd';
 import { connect } from 'react-redux';
 import store from '../store';
+const { Search } = Input;
 class Head extends Component {
   constructor() {
     super()
@@ -14,6 +15,7 @@ class Head extends Component {
     this.unfold = this.unfold.bind(this)
     this.go = this.go.bind(this)
     this.loginout = this.loginout.bind(this)
+    this.search = this.search.bind(this)
   }
   go(path) {
     this.props.history.push(path)
@@ -40,6 +42,9 @@ class Head extends Component {
     store.dispatch({ type: 'LOGOUT' });
     this.go('/loginout');
   }
+  search(value) {
+    this.props.history.push({ pathname: "/selectpage", query: { value } })
+  }
   render() {
     let styleObj = {
       height: this.state.defaultHeight ? '13vw' : 'auto',
@@ -63,8 +68,14 @@ class Head extends Component {
               <p>APP</p>
             </li>
             <li className={'seek'}>
-              <div className={'input'}> <input type={'text'} placeholder={'我的便携式游戏女友'}></input>
-                <i className={'seekxtb'}> </i></div>
+              <div className={'input'}>
+                {/* <input type={'text'} placeholder={'我的便携式游戏女友'}></input>
+                <i className={'seekxtb'}> </i> */}
+                <Search
+                  placeholder="搜索小说"
+                  onSearch={this.search}
+                />
+              </div>
             </li>
             <li className={'footer'}>
               <p><i className={'fan'}></i>简繁切换</p>

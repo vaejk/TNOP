@@ -30,6 +30,7 @@ const LoginOut = lazy(() => import('./components/LoginOut'));
 const Rankinglist = lazy(() => import('./components/Rankinglist'));
 const PageList = lazy(() => import('./components/PageList'));
 const ChangePassword = lazy(() => import('./components/ChangePassword'));
+const SelectPage = lazy(() => import('./components/SelectPage'));
 
 class App extends Component {
 
@@ -59,6 +60,7 @@ class App extends Component {
             <Route path='/pageList' component={PageList} />
             <Route path='/personal' component={Personal} />
             <Route path='/loginout' component={LoginOut} />
+            <Route path='/selectpage' component={SelectPage} />
             <Route path='/changepassword' component={ChangePassword} />
             <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
             <Redirect from="/" to="/home" exact />

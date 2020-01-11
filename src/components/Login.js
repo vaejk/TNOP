@@ -27,12 +27,10 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.from)
         let { query } = this.props.location;
         if (query) {
             let { username } = query;
             if (username) {
-                console.log('username:', username);
                 this.setState({
                     mail: username
                 })
@@ -43,10 +41,8 @@ class Login extends Component {
 
     async login() {
         let { mail, password, quick } = this.state;
-        console.log(mail, password, quick);
         if (mail && password) {
             let token = create(mail);
-            console.log("mail转换成token：", token)
             password = md5(password);
 
             //发送axios请求
@@ -57,8 +53,6 @@ class Login extends Component {
                     istrue: quick
                 }
             );
-
-            console.log('result:', result)
 
             if (result.data.status) {
                 if (quick) {
