@@ -161,33 +161,33 @@ class Activity extends Component {
         let { showlist } = this.state;
         return (
             <>
-            <Head></Head>
-            <div style={{ backgroundColor: "#f5f5f5", overflow: "hidden" }} >
-                <p className="notice">
-                    <a href="###">轻之文库整改公告</a>
-                </p>
-                <div id="activity">
-                    <ul className="activity">
-                        {
-                            showlist.map((item, index) => {
-                                return (
-                                    <li key={index}>
-                                        <div className="img">
-                                            <img src={item.image_url} />
-                                        </div>
-                                        <div className="content">
-                                            <p className="title">{item.title}</p>
-                                            <p className="date">{item.date}</p>
-                                        </div>
-                                    </li>
-                                )
-                            })
-                        }
-                    </ul>
-                    <Pagination defaultCurrent={1} total={25} defaultPageSize={20} onChange={this.changepage} />
-                </div>
-                <PublicFoot />
-            </ div >
+                <Head></Head>
+                <div style={{ backgroundColor: "#f5f5f5", overflow: "hidden" }} >
+                    <p className="notice">
+                        <a href="###">轻之文库整改公告</a>
+                    </p>
+                    <div id="activity">
+                        <ul className="activity">
+                            {
+                                showlist.map((item, index) => {
+                                    return (
+                                        <li key={index}>
+                                            <div className="img">
+                                                <img src={item.image_url} alt="" />
+                                            </div>
+                                            <div className="content">
+                                                <p className="title">{item.title}</p>
+                                                <p className="date">{item.date}</p>
+                                            </div>
+                                        </li>
+                                    )
+                                })
+                            }
+                        </ul>
+                        <Pagination defaultCurrent={1} total={25} defaultPageSize={20} onChange={this.changepage} />
+                    </div>
+                    <PublicFoot />
+                </ div >
             </>
         )
     }

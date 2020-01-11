@@ -9,10 +9,15 @@ import './scss/Head.scss'
 import './scss/paihang.scss'
 import './scss/base.css'
 import 'antd/dist/antd.css'
+
+import { Provider } from 'react-redux';
+import store from './store';
 render(
-    <HashRouter>
-        <App />
-    </HashRouter>
+    <Provider store={store}>
+        <HashRouter>
+            <App />
+        </HashRouter>
+    </Provider>
     ,
     document.getElementById('root')
 );

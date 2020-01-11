@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, message } from 'antd';
 import '../scss/Register.scss';
 import 'antd/dist/antd.css'
+import axios from 'axios';
 
 import md5 from 'js-md5';
 
-import { create, verify } from "../utils/jsonwebtoken.js";
+// import { create } from "../utils/jsonwebtoken.js";
 
 import Head from './Head'
 
@@ -21,22 +22,45 @@ class Register extends Component {
         }
         this.reg = this.reg.bind(this)
         this.validFunction = this.validFunction.bind(this)
+        this.checkName = this.checkName.bind(this)
     }
 
-    reg() {
+    async reg() {
+        //获取账号、密码
         let { mail, password, comfirm } = this.state
-        console.log(mail, password, comfirm)
-        if (mail && password && password == comfirm) {
-            mail = create(mail);
-            password = md5(password)
+
+        if (mail && password && password == comfirm) {//判断非空
+            // mail = create(mail);
+            password = md5(password)//密码的MD5加密
             console.log("mail", mail, 'password', password)
+
+            let result = await axios.post('http://localhost:8100/reg', {
+                username: mail,
+                password
+            })
+
+            console.log(result.data);
+            if (result.data.status) {
+                this.regsuccess()
+                setTimeout(() => { this.props.history.push({ pathname: "/login", query: { username: mail } }) }, 3000);
+            } else {
+                this.regfales()
+            }
         }
     }
 
-    validFunction(rule, value, callback) {
+    regsuccess = () => {
+        message.info('注册成功，即将进入登录页面');
+    }
+    regfales = () => {
+        message.info('注册失败');
+    }
+
+    validFunction(rule, value, callback) {//确认密码的验证
         let { password } = this.state;
-        if (value) {
+        if (value) {//判断非空
             if (password == value) {
+                //两次密码相同则修改state
                 this.setState({
                     comfirm: value
                 })
@@ -46,6 +70,24 @@ class Register extends Component {
             }
         } else {
             callback('请确认密码')
+        }
+    }
+
+    async checkName(rule, value, callback) {
+        let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$");
+        if (reg.test(value)) {
+            let result = await axios.post('http://localhost:8100/checkname', { username: value });
+            console.log(result)
+            if (result.data.code) {
+                this.setState({
+                    mail: value
+                })
+                callback();
+            } else {
+                callback('邮箱已被注册');
+            }
+        } else {
+            callback('邮箱地址不正确');
         }
     }
 
@@ -62,23 +104,32 @@ class Register extends Component {
                         <Form.Item>
                             {getFieldDecorator('mail', {
                                 rules: [{ required: true, message: '请输入邮箱地址' },
+                                // {
+                                //     pattern: new RegExp(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/, "g"),
+                                //     message: "邮箱地址不正确"
+                                // },
                                 {
-                                    pattern: new RegExp(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/, "g"),
-                                    message: "邮箱地址不正确"
+                                    validator: this.checkName
                                 }],
                             })(
                                 <Input
                                     prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.5)' }} />}
                                     placeholder="请输入邮箱地址"
-                                    onChange={e => {
-                                        let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$");
-                                        let value = e.target.value
-                                        if (reg.test(value)) {
-                                            this.setState({
-                                                mail: e.target.value
-                                            })
-                                        }
-                                    }}
+                                // onBlur={async e => {
+                                //     let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$");
+                                //     let value = e.target.value
+                                //     if (reg.test(value)) {
+
+                                //         let value = e.target.value;
+                                //         let result = await axios.post('http://localhost:8100/checkname', { username: value });
+                                //         if (result.data.code) {
+                                //             console.log('success');
+                                //             this.setState({
+                                //                 mail: e.target.value
+                                //             })
+                                //         }
+                                //     }
+                                // }}
                                 />,
                             )}
                         </Form.Item>
@@ -110,18 +161,12 @@ class Register extends Component {
                         <Form.Item>
                             {getFieldDecorator('comfirm', {
                                 rules: [
-                                    // { required: true, message: '请确认密码' },
-                                    // {
-                                    //     pattern: new RegExp(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/, "g"),
-                                    //     message: "密码格式不正确"
-                                    // },
                                     {
                                         validator: this.validFunction
                                     }
                                 ],
                             })(
                                 <Input
-                                    // suffix={<span style={{ color: '#2ac9ad', float: "right" }}>获取验证码</span>}
                                     prefix={<Icon type="check-circle" style={{ color: 'rgba(0,0,0,.5)' }} />}
                                     type="password"
                                     placeholder="请确认密码"

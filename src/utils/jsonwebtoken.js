@@ -12,7 +12,7 @@ function verify(token) {
     let res;
     try {
         let result = jwt.verify(token, secret);
-        // console.log('token校验：', result)
+        console.log('token校验：', result)
         res = true;
     } catch (err) {
         res = false;

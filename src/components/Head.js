@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import cookie from 'react-cookies';
 import { Icon } from 'antd';
+import { connect } from 'react-redux';
+import store from '../store';
 class Head extends Component {
   constructor() {
     super()
@@ -23,22 +25,25 @@ class Head extends Component {
   }
 
   componentDidMount() {
-    let result = cookie.load("user");
-    if (result) {
-      this.setState({
-        isLogin: true
-      })
-    }
+    setTimeout(() => {
+      let { isLogin } = this.props;
+      if (isLogin) {
+        this.setState({
+          isLogin: isLogin
+        })
+      }
+      // console.log("111:", this.props)
+    }, 500)
   }
   loginout() {
     cookie.remove("user");
-    this.go('/LoginOut');
+    store.dispatch({ type: 'LOGOUT' });
+    this.go('/loginout');
   }
-
   render() {
     let styleObj = {
       height: this.state.defaultHeight ? '13vw' : 'auto',
-      position: this.props.history.location.pathname == '/Rankinglist' ? 'fixed' : null 
+      position: this.props.history.location.pathname === '/Rankinglist' ? 'fixed' : null
     }
     return (
       <>
@@ -66,12 +71,12 @@ class Head extends Component {
               {
                 this.state.isLogin ?
                   <>
-                    <p><Icon type="user" onClick={this.go.bind(null, '/personal')} />个人中心</p>
+                    <p onClick={this.go.bind(null, '/personal')}><Icon type="user" />个人中心</p>
                     <p><Icon type="edit" />签到</p>
                     <p><Icon type="mail" />系统通知</p>
                     <p><Icon type="mail" />作者通知</p>
                     <p><Icon type="mail" />投稿管理</p>
-                    <p onClick={this.loginout}><Icon type="loginout" />退出登录</p>
+                    <p onClick={this.loginout}><Icon type="logout" />退出登录</p>
                     <p><Icon type="appstore" />收藏夹</p>
                   </>
                   :
@@ -88,5 +93,11 @@ class Head extends Component {
     )
   }
 }
+
+const mapStateToProps = function (state) {
+  return state
+}
+
+Head = connect(mapStateToProps)(Head)
 Head = withRouter(Head)
 export default Head;

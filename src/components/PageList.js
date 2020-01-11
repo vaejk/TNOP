@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Button, Menu, Pagination } from 'antd';
+import { Icon, Menu, Pagination } from 'antd';
 import Head from './Head'
 import '../scss/PageList.scss';
 import 'antd/dist/antd.css';
@@ -266,17 +266,17 @@ class PageList extends Component {
     render() {
         return (
             <>
-            <Head></Head>
-            <div>
-                <div id="pagelist" >
-                    <h2>
-                        <div><span className="square"></span>分类检索</div>
-                        <div className="changetype">
-                            <Icon type="appstore" />
-                            <Icon type="database" />
-                        </div>
-                    </h2>
-                    {/* <ul className="list">
+                <Head></Head>
+                <div>
+                    <div id="pagelist" >
+                        <h2>
+                            <div><span className="square"></span>分类检索</div>
+                            <div className="changetype">
+                                <Icon type="appstore" />
+                                <Icon type="database" />
+                            </div>
+                        </h2>
+                        {/* <ul className="list">
                         {
                             this.state.list.map((item, index) => {
                                 return (
@@ -289,39 +289,39 @@ class PageList extends Component {
                             })
                         }
                     </ul> */}
-                    <Menu
-                        className="list"
-                        style={{ width: "100%" }}
-                        defaultSelectedKeys={['0']}
-                    // mode={this.state.mode}
-                    // theme={this.state.theme}
-                    >
-                        {
-                            this.state.list.map((item, index) => {
-                                return (
-                                    <Menu.Item key={index}>
-                                        {item.text}
-                                    </Menu.Item>
-                                )
-                            })
-                        }
-                    </Menu>
-                    <ul className="fictionlist">
-                        {
-                            this.state.jiashuju.map((item, index) => {
-                                return (
-                                    <li key={index}>
-                                        <img src={item.image_url} />
-                                        <p className="title">{item.title}</p>
-                                    </li>
-                                )
-                            })
-                        }
-                    </ul>
-                    <Pagination defaultCurrent={6} total={500} />
+                        <Menu
+                            className="list"
+                            style={{ width: "100%" }}
+                            defaultSelectedKeys={['0']}
+                        // mode={this.state.mode}
+                        // theme={this.state.theme}
+                        >
+                            {
+                                this.state.list.map((item, index) => {
+                                    return (
+                                        <Menu.Item key={index}>
+                                            {item.text}
+                                        </Menu.Item>
+                                    )
+                                })
+                            }
+                        </Menu>
+                        <ul className="fictionlist">
+                            {
+                                this.state.jiashuju.map((item, index) => {
+                                    return (
+                                        <li key={index}>
+                                            <img src={item.image_url} alt="" />
+                                            <p className="title">{item.title}</p>
+                                        </li>
+                                    )
+                                })
+                            }
+                        </ul>
+                        <Pagination defaultCurrent={6} total={500} />
+                    </div>
+                    <PublicFoot />
                 </div>
-                <PublicFoot />
-            </div>
             </>
         )
     }

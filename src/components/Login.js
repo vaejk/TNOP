@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Checkbox, Button, Divider } from 'antd';
+import { Form, Icon, Input, Checkbox, Button, Divider, message } from 'antd';
 import '../scss/Login.scss';
 import 'antd/dist/antd.css';
+
+import { withRouter } from 'react-router-dom';
 
 import { create } from "../utils/jsonwebtoken.js";
 import md5 from 'js-md5';
 import cookie from 'react-cookies';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 import Head from './Head';
+import store from '../store';
 
 class Login extends Component {
     constructor(props) {
@@ -21,28 +26,65 @@ class Login extends Component {
         this.login = this.login.bind(this)
     }
 
-    login() {
+    componentDidMount() {
+        console.log(this.props.from)
+        let { query } = this.props.location;
+        if (query) {
+            let { username } = query;
+            if (username) {
+                console.log('username:', username);
+                this.setState({
+                    mail: username
+                })
+                this.props.form.setFieldsValue({ mail: username });
+            }
+        }
+    }
+
+    async login() {
         let { mail, password, quick } = this.state;
         console.log(mail, password, quick);
         if (mail && password) {
-            mail = create(mail);
-            console.log("mail转换成token：", mail)
+            let token = create(mail);
+            console.log("mail转换成token：", token)
             password = md5(password);
 
             //发送axios请求
-            let result = true;
-            if (result) {
-
-                let now = new Date().getTime();
-                if (quick) {
-                    let expires = new Date(now + 1000 * 60 * 60 * 24 * 7);
-                    cookie.save('user', mail, { expires });
-                } else {
-                    cookie.save('user', mail, { expires: now })
+            let result = await axios.post('http://localhost:8100/login',
+                {
+                    username: mail,
+                    password,
+                    istrue: quick
                 }
-                this.props.history.push("/home")
+            );
+
+            console.log('result:', result)
+
+            if (result.data.status) {
+                if (quick) {
+                    let now = new Date().getTime();
+                    let expires = new Date(now + 1000 * 60 * 60 * 24 * 7);
+                    cookie.save('user', token, { expires });
+                } else {
+                    cookie.save('user', token);
+                }
+                let userinfo = result.data.data[0];
+                store.dispatch({ type: "SET_LOGIN_DATA", payload: { isLogin: true, userinfo: userinfo } })
+                this.loginsuccess();
+                setTimeout(() => {
+                    this.props.history.push("/home");
+                }, 3000)
+            } else {
+                this.loginfales();
             }
         }
+    }
+
+    loginsuccess = () => {
+        message.info('登录成功，即将进入主页');
+    }
+    loginfales = () => {
+        message.info('登录失败');
     }
 
     render() {
@@ -93,7 +135,7 @@ class Login extends Component {
                                 <Input
                                     prefix={<Icon type="edit" style={{ color: 'rgba(0,0,0,.5)' }} />}
                                     // suffix={<span style={{ color: '#2ac9ad', float: "right" }}>获取验证码</span>}
-                                    type="checkcode"
+                                    type="password"
                                     placeholder="请输入密码"
                                     onChange={e => {
                                         let reg = new RegExp("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$");
@@ -125,5 +167,13 @@ class Login extends Component {
 }
 
 Login = Form.create({})(Login);
+
+Login = withRouter(Login);
+
+const mapStateToProps = function (state) {
+    return state
+}
+
+Login = connect(mapStateToProps)(Login);
 
 export default Login;

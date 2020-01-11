@@ -301,9 +301,6 @@ h1 {
 
 .yc li .pai {
   margin-left: 1.33333vw;
-}
-
-.yc li i {
   background: url(../images/icon-new.656691a.png) center no-repeat;
   display: inline-block;
   width: 8.53333vw;
@@ -359,4 +356,9 @@ h1 {
   display: flex;
   align-items: center;
   margin-bottom: 0;
+}
+
+.yc .footer i {
+  font-size: 4.26667vw;
+  margin-right: 2.66667vw;
 }

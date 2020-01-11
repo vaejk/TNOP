@@ -267,14 +267,14 @@ h1{
         }
         .pai{
             margin-left: vw(5);
-        }
-        i{
             background: url(../images/icon-new.656691a.png) center no-repeat;
             display:inline-block;
             width: vw(32);
             height: vw(32);
             background-size: 100% 100%;
         }
+        // i{
+        // }
         .fan{
             background: url(../images/fan.png)no-repeat;
             width: vw(25);
@@ -321,5 +321,9 @@ h1{
     }
     .footer{
         // height: vw(177.5);
+        i{
+            font-size: vw(16);
+            margin-right: vw(10);
+        }
     }
 }
