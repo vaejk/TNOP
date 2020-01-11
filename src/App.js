@@ -31,6 +31,8 @@ const Rankinglist = lazy(() => import('./components/Rankinglist'));
 const PageList = lazy(() => import('./components/PageList'));
 const ChangePassword = lazy(() => import('./components/ChangePassword'));
 const SelectPage = lazy(() => import('./components/SelectPage'));
+const Detail = lazy(() => import('./components/Detail'));
+const Content = lazy(() => import('./components/Content'));
 
 class App extends Component {
 
@@ -55,7 +57,9 @@ class App extends Component {
             <Route path='/sign' component={Sign} />
             <Route path='/activity' component={Activity} />
             <Route path='/new' component={NewWriter} />
+            <Route path='/content/:id' component={Content} />
             <Route path='/reg' component={Register} />
+            <Route path='/Detail/:id' component={Detail} />
             <Route path='/login' component={Login} />
             <Route path='/pageList' component={PageList} />
             <Route path='/personal' component={Personal} />
