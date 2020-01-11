@@ -58,7 +58,7 @@ class Head extends Component {
           </div>
           <ul className={'yc'}>
             <li className={'head'}>
-              <p>全部分类</p>
+              <p onClick={this.go.bind(null, '/pagelist')}>全部分类</p>
               <p className={'tb'} onClick={this.go.bind(null, '/Rankinglist')} >排行榜<i className={'pai'}></i></p>
               <p>APP</p>
             </li>
