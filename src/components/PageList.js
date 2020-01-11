@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Icon, Menu, Pagination } from 'antd';
+import { withRouter } from 'react-router-dom'
 import Head from './Head'
 import '../scss/PageList.scss';
 import 'antd/dist/antd.css';
 import PublicFoot from './PublicFoot.js';
+import axios from 'axios'
 
 class PageList extends Component {
     constructor() {
@@ -14,256 +16,129 @@ class PageList extends Component {
                 {
                     text: '全部',
                     type: 'all'
+                    , id: 1
                 },
                 {
                     text: '文库精选',
                     type: 'choiceness'
+                    , id: 2
                 },
                 {
                     text: '幻想',
                     type: 'fantasy'
+                    , id: 3
                 },
                 {
                     text: '战斗',
                     type: 'battle'
+                    , id: 4
                 },
                 {
                     text: '恋爱'
+                    , id: 5
                 },
                 {
                     text: '搞笑'
+                    , id: 6
                 },
                 {
                     text: '日常'
+                    , id: 7
                 },
                 {
                     text: '校园'
+                    , id: 8
                 },
                 {
                     text: '后宫'
+                    , id: 9
                 },
                 {
                     text: '科幻'
+                    , id: 10
                 },
                 {
                     text: '治愈'
+                    , id: 11
                 },
                 {
                     text: '超能力'
+                    , id: 12
                 },
                 {
                     text: '节操'
+                    , id: 13
                 },
                 {
                     text: '妖怪'
+                    , id: 14
                 },
                 {
                     text: '恐怖'
+                    , id: 15
                 },
                 {
                     text: '妹控'
+                    , id: 16
                 },
                 {
                     text: '伪娘'
+                    , id: 17
                 },
                 {
                     text: '魔法少女'
+                    , id: 18
                 },
                 {
                     text: '乙女'
+                    , id: 19
                 },
                 {
                     text: '百合'
+                    , id: 20
                 },
                 {
                     text: '偶像'
+                    , id: 21
                 },
                 {
                     text: '悬疑'
+                    , id: 22
                 }
             ],
             jiashuju: [
                 {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
-                },
-                {
-                    image_url: './images/1.jpg',
-                    title: '我的未来骑士团不可能都是步兵'
-                },
-                {
-                    image_url: './images/2.jpg',
-                    title: '噬暗'
+                    id: 1,
+                    bookname: ''
                 }
             ]
         }
-    }
+        this.go = this.go.bind(this)
+        this.gopush = this.gopush.bind(this)
 
+    }
+    componentDidMount() {
+        axios.get('http://192.168.43.3:8100/a?id=1')
+            .then((res) => {
+                this.setState({
+                    jiashuju: res.data.item.arr
+                })
+            })
+    }
+    go(id) {
+        axios.get('http://192.168.43.3:8100/a?id=' + id)
+            .then((res) => {
+                this.setState({
+                    jiashuju: res.data.item.arr
+                })
+            })
+    }
+    gopush(id) {
+        this.props.history.push('/Detail/' + id)
+    }
     render() {
+        console.log(this.state.jiashuju);
+
         return (
             <>
                 <Head></Head>
@@ -299,7 +174,7 @@ class PageList extends Component {
                             {
                                 this.state.list.map((item, index) => {
                                     return (
-                                        <Menu.Item key={index}>
+                                        <Menu.Item key={index} onClick={this.go.bind(null, item.id)}>
                                             {item.text}
                                         </Menu.Item>
                                     )
@@ -308,11 +183,11 @@ class PageList extends Component {
                         </Menu>
                         <ul className="fictionlist">
                             {
-                                this.state.jiashuju.map((item, index) => {
+                                this.state.jiashuju.map((item) => {
                                     return (
-                                        <li key={index}>
-                                            <img src={item.image_url} alt="" />
-                                            <p className="title">{item.title}</p>
+                                        <li key={item.id} onClick={this.gopush.bind(null, item.id)} >
+                                            <img src={item.images} alt="" />
+                                            <p className="title">{item.bookname}</p>
                                         </li>
                                     )
                                 })
@@ -326,5 +201,5 @@ class PageList extends Component {
         )
     }
 }
-
+PageList = withRouter(PageList)
 export default PageList;
