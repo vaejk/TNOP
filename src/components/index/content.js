@@ -11,9 +11,13 @@ class Content extends Component {
                 { imgs: require('../../images/trophy_icon.png'), name: '新人赏', path: '/new' },
                 { imgs: require('../../images/pen_icon.png'), name: '签约', path: '/sign' }
             ],
-            api: []
+            api: [],
+            apiname: [{ name: '全部', id: 1 }, { name: '校园', id: 2 }, { name: '恋爱', id: 3 }, { name: '幻想', id: 4 }, { name: '战斗', id: 5 }, { name: '搞笑', id: 6 }, { name: '日常', id: 7 }, { name: '后宫', id: 8 }],
+            api2: [{ id: 1 }],
+            num: '全部'
         }
         this.links = this.likns.bind(this)
+        this.lisits = this.lisits.bind(this)
     }
     likns(path) {
         this.props.history.push(path)
@@ -26,10 +30,27 @@ class Content extends Component {
                 })
             })
             .catch((err) => console.log(err));
+        axios.get('http://192.168.43.3:8100/a?id=1')
+            .then((res) => {
+                this.setState({
+                    api2: res.data.item.arr
+                })
+            })
+            .catch((err) => console.log(err));
 
     }
+    lisits(obj) {
+        let { id, name } = obj
+        axios.get('http://192.168.43.3:8100/a?id=' + id)
+            .then((res) => {
+                this.setState({
+                    api2: res.data.item.arr,
+                    num: name
+                })
+            })
+            .catch((err) => console.log(err));
+    }
     render() {
-        console.log(this.state.api)
         return (
             <>
                 <ul className="nav">
@@ -56,7 +77,7 @@ class Content extends Component {
                         </div>
                         <ul className="list">
                             {this.state.api.map(item => {
-                                return <li kyl={item.id}>
+                                return <li key={item.id}>
                                     <img src={item.images}
                                         alt="" />
                                     <div>
@@ -73,114 +94,24 @@ class Content extends Component {
                     <div className="w">
                         <div className="fenlei-top">
                             <ul>
-                                <li>分类</li>
-                                <li>校园</li>
-                                <li>恋爱</li>
-                                <li>幻想</li>
-                                <li>战斗</li>
-                                <li>搞笑</li>
-                                <li>日常</li>
-                                <li>后宫</li>
+                                {this.state.apiname.map(item => {
+                                    return <li key={item.name} onClick={this.lisits.bind(null, { id: item.id, name: item.name })} className={this.state.num == item.name ? 'gaoliang' : null}>{item.name}</li>
+                                })}
                             </ul>
                         </div>
                         <div className="tb">查看更多<img src="../src/images/more.png" alt="" /></div>
                         <ul className="fenlei-bottom">
-                            <li>
-                                <img src="https://rin.linovel.net/cover/105882_526e72b3035f566de9e94088a6b67de1.jpg!min300jpg"
-                                    alt="" />
-                                <div>
-                                    <h4>月光的守護者</h4>
-                                    <p>友情提示：絕對不要買加油站旁邊的房子！
-                                        意外受到襲擊導致房子被惡火燒毀，無家可歸的青年，其真實身分竟是......
-                                        「所以我才說不要買在加油站旁邊的房子嘛！」
-                                        流傳已久的都市傳說——血腥瑪麗，真相竟是......
-                                        「嚇人最好玩了！」
-                                        捲入一場陰謀的兩人，註定無法在這個城市過上安穩的生活......
-                                        「不要偷吃我豆腐啦…...」
-                            就這樣，兩人的冒險在全身濕透的展開下開啟了序幕。</p>
-                                    <span>二十四owo</span><span>8.7万字</span>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="https://rin.linovel.net/cover/105882_526e72b3035f566de9e94088a6b67de1.jpg!min300jpg"
-                                    alt="" />
-                                <div>
-                                    <h4>月光的守護者</h4>
-                                    <p>友情提示：絕對不要買加油站旁邊的房子！
-                                        意外受到襲擊導致房子被惡火燒毀，無家可歸的青年，其真實身分竟是......
-                                        「所以我才說不要買在加油站旁邊的房子嘛！」
-                                        流傳已久的都市傳說——血腥瑪麗，真相竟是......
-                                        「嚇人最好玩了！」
-                                        捲入一場陰謀的兩人，註定無法在這個城市過上安穩的生活......
-                                        「不要偷吃我豆腐啦…...」
-                            就這樣，兩人的冒險在全身濕透的展開下開啟了序幕。</p>
-                                    <span>二十四owo</span><span>8.7万字</span>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="https://rin.linovel.net/cover/105882_526e72b3035f566de9e94088a6b67de1.jpg!min300jpg"
-                                    alt="" />
-                                <div>
-                                    <h4>月光的守護者</h4>
-                                    <p>友情提示：絕對不要買加油站旁邊的房子！
-                                        意外受到襲擊導致房子被惡火燒毀，無家可歸的青年，其真實身分竟是......
-                                        「所以我才說不要買在加油站旁邊的房子嘛！」
-                                        流傳已久的都市傳說——血腥瑪麗，真相竟是......
-                                        「嚇人最好玩了！」
-                                        捲入一場陰謀的兩人，註定無法在這個城市過上安穩的生活......
-                                        「不要偷吃我豆腐啦…...」
-                            就這樣，兩人的冒險在全身濕透的展開下開啟了序幕。</p>
-                                    <span>二十四owo</span><span>8.7万字</span>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="https://rin.linovel.net/cover/105882_526e72b3035f566de9e94088a6b67de1.jpg!min300jpg"
-                                    alt="" />
-                                <div>
-                                    <h4>月光的守護者</h4>
-                                    <p>友情提示：絕對不要買加油站旁邊的房子！
-                                        意外受到襲擊導致房子被惡火燒毀，無家可歸的青年，其真實身分竟是......
-                                        「所以我才說不要買在加油站旁邊的房子嘛！」
-                                        流傳已久的都市傳說——血腥瑪麗，真相竟是......
-                                        「嚇人最好玩了！」
-                                        捲入一場陰謀的兩人，註定無法在這個城市過上安穩的生活......
-                                        「不要偷吃我豆腐啦…...」
-                            就這樣，兩人的冒險在全身濕透的展開下開啟了序幕。</p>
-                                    <span>二十四owo</span><span>8.7万字</span>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="https://rin.linovel.net/cover/105882_526e72b3035f566de9e94088a6b67de1.jpg!min300jpg"
-                                    alt="" />
-                                <div>
-                                    <h4>月光的守護者</h4>
-                                    <p>友情提示：絕對不要買加油站旁邊的房子！
-                                        意外受到襲擊導致房子被惡火燒毀，無家可歸的青年，其真實身分竟是......
-                                        「所以我才說不要買在加油站旁邊的房子嘛！」
-                                        流傳已久的都市傳說——血腥瑪麗，真相竟是......
-                                        「嚇人最好玩了！」
-                                        捲入一場陰謀的兩人，註定無法在這個城市過上安穩的生活......
-                                        「不要偷吃我豆腐啦…...」
-                            就這樣，兩人的冒險在全身濕透的展開下開啟了序幕。</p>
-                                    <span>二十四owo</span><span>8.7万字</span>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="https://rin.linovel.net/cover/105882_526e72b3035f566de9e94088a6b67de1.jpg!min300jpg"
-                                    alt="" />
-                                <div>
-                                    <h4>月光的守護者</h4>
-                                    <p>友情提示：絕對不要買加油站旁邊的房子！
-                                        意外受到襲擊導致房子被惡火燒毀，無家可歸的青年，其真實身分竟是......
-                                        「所以我才說不要買在加油站旁邊的房子嘛！」
-                                        流傳已久的都市傳說——血腥瑪麗，真相竟是......
-                                        「嚇人最好玩了！」
-                                        捲入一場陰謀的兩人，註定無法在這個城市過上安穩的生活......
-                                        「不要偷吃我豆腐啦…...」
-                            就這樣，兩人的冒險在全身濕透的展開下開啟了序幕。</p>
-                                    <span>二十四owo</span><span>8.7万字</span>
-                                </div>
-                            </li>
+                            {this.state.api2.map(item => {
+                                return <li key={item.id}>
+                                    <img src={item.images}
+                                        alt="" />
+                                    <div>
+                                        <h4>{item.bookname}</h4>
+                                        <p>{item.introduce}</p>
+                                        <p className={'p2'}>{item.Theauthor}</p>
+                                    </div>
+                                </li>
+                            })}
                         </ul>
                     </div>
                 </div>

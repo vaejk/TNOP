@@ -37,6 +37,7 @@
 #activity .activity li .content {
   flex: 1;
   display: flex;
+  padding-top: 0;
   flex-direction: column;
   justify-content: space-around;
 }
