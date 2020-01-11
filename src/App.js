@@ -1,17 +1,17 @@
 import React, { Component, Suspense, lazy } from 'react';
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Index from './components/index/index'
-import Sign from './components/Sign'
-import Activity from './components/Activity'
-import NewWriter from './components/NewWriter'
-import Register from './components/Register'
-import Login from './components/Login'
-import PageList from './components/PageList'
-import Personal from './components/Personal'
-import LoginOut from './components/LoginOut'
-import Rankinglist from './components/Rankinglist'
-import ChangePassword from './components/ChangePassword'
+// import Index from './components/index/index'
+// import Sign from './components/Sign'
+// import Activity from './components/Activity'
+// import NewWriter from './components/NewWriter'
+// import Register from './components/Register'
+// import Login from './components/Login'
+// import PageList from './components/PageList'
+// import Personal from './components/Personal'
+// import LoginOut from './components/LoginOut'
+// import Rankinglist from './components/Rankinglist'
+// import ChangePassword from './components/ChangePassword'
 
 import axios from 'axios';
 import cookie from 'react-cookies';
@@ -29,6 +29,9 @@ const Personal = lazy(() => import('./components/Personal'));
 const LoginOut = lazy(() => import('./components/LoginOut'));
 const Rankinglist = lazy(() => import('./components/Rankinglist'));
 const PageList = lazy(() => import('./components/PageList'));
+const ChangePassword = lazy(() => import('./components/ChangePassword'));
+const Detail = lazy(() => import('./components/Detail'));
+const Content = lazy(() => import('./components/Content'));
 
 class App extends Component {
   constructor() {
@@ -59,7 +62,9 @@ class App extends Component {
             <Route path='/sign' component={Sign} />
             <Route path='/activity' component={Activity} />
             <Route path='/new' component={NewWriter} />
+            <Route path='/content/:id' component={Content} />
             <Route path='/reg' component={Register} />
+            <Route path='/Detail/:id' component={Detail} />
             <Route path='/login' component={Login} />
             <Route path='/pageList' component={PageList} />
             <Route path='/personal' component={Personal} />
