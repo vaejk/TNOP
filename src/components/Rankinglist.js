@@ -43,8 +43,8 @@ class Rankinglist extends Component {
                 <Head></Head>
                 <ul className="fentou">
                     {this.state.navs.map(item => {
-                        return <li key={item.name} className={this.state.actins == item.name ? 'activity' : null} onClick={this.actin.bind(null, item.name)}>
-                            <a>{item.name}</a>
+                        return <li key={item.name} className={this.state.actins === item.name ? 'activity' : null} onClick={this.actin.bind(null, item.name)}>
+                            <a href="###">{item.name}</a>
                             <i></i>
                         </li>
                     })}
@@ -52,7 +52,7 @@ class Rankinglist extends Component {
                 <div className="content">
                     <ul className="cont-left">
                         {this.state.api.map((item, index) => {
-                            return <li key={index} className={this.state.actins2 == item.title ? 'checked' : null} onClick={this.actin2.bind(null, { name: item.title, index })}>
+                            return <li key={index} className={this.state.actins2 === item.title ? 'checked' : null} onClick={this.actin2.bind(null, { name: item.title, index })}>
                                 {item.title}
                             </li>
                         })}

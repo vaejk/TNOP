@@ -102,7 +102,7 @@ class Login extends Component {
                                 rules: [
                                     { required: true, message: '请输入邮箱地址' },
                                     {
-                                        pattern: new RegExp(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/, "g"),
+                                        pattern: new RegExp(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+([a-zA-Z0-9_-]+)+$/, "g"),
                                         message: "邮箱地址不正确"
                                     }
                                 ],
@@ -112,7 +112,7 @@ class Login extends Component {
                                     placeholder="请输入邮箱"
                                     onChange={
                                         e => {
-                                            let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$");
+                                            let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+([a-zA-Z0-9_-]+)+$");
                                             let value = e.target.value
                                             if (reg.test(value)) {
                                                 this.setState({

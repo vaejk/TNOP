@@ -73,7 +73,7 @@ class Content extends Component {
                 <div className="testimonial">
                     <div className="w">
                         <div className="top">
-                            <h3>编辑推荐</h3><span>2019第25周勤更推荐</span><a href="">更多<img src="../../images/more.png" alt="" /></a>
+                            <h3>编辑推荐</h3><span>2019第25周勤更推荐</span><a href="###">更多<img src="../../images/more.png" alt="" /></a>
                         </div>
                         <ul className="list">
                             {this.state.api.map(item => {
@@ -95,7 +95,7 @@ class Content extends Component {
                         <div className="fenlei-top">
                             <ul>
                                 {this.state.apiname.map(item => {
-                                    return <li key={item.name} onClick={this.lisits.bind(null, { id: item.id, name: item.name })} className={this.state.num == item.name ? 'gaoliang' : null}>{item.name}</li>
+                                    return <li key={item.name} onClick={this.lisits.bind(null, { id: item.id, name: item.name })} className={this.state.num === item.name ? 'gaoliang' : null}>{item.name}</li>
                                 })}
                             </ul>
                         </div>

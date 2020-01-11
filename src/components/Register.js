@@ -29,7 +29,7 @@ class Register extends Component {
         //获取账号、密码
         let { mail, password, comfirm } = this.state
 
-        if (mail && password && password == comfirm) {//判断非空
+        if (mail && password && password === comfirm) {//判断非空
             // mail = create(mail);
             password = md5(password)//密码的MD5加密
             console.log("mail", mail, 'password', password)
@@ -59,7 +59,7 @@ class Register extends Component {
     validFunction(rule, value, callback) {//确认密码的验证
         let { password } = this.state;
         if (value) {//判断非空
-            if (password == value) {
+            if (password === value) {
                 //两次密码相同则修改state
                 this.setState({
                     comfirm: value
@@ -74,7 +74,7 @@ class Register extends Component {
     }
 
     async checkName(rule, value, callback) {
-        let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$");
+        let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+([a-zA-Z0-9_-]+)+$");
         if (reg.test(value)) {
             let result = await axios.post('http://localhost:8100/checkname', { username: value });
             console.log(result)

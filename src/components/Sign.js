@@ -4,11 +4,11 @@ import Head from './Head'
 const Sign = () => {
     return (
         <>
-        <Head></Head>
-        <div id="sign">
-            <img style={{ width: "100%" }} src={require('../images/sign.png')} />
-            <PublicFoot />
-        </div >
+            <Head></Head>
+            <div id="sign">
+                <img style={{ width: "100%" }} src={require('../images/sign.png')} alt="" />
+                <PublicFoot />
+            </div >
         </>
     )
 }

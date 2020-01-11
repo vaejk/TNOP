@@ -1,17 +1,17 @@
 import React, { Component, Suspense, lazy } from 'react';
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Index from './components/index/index'
-import Sign from './components/Sign'
-import Activity from './components/Activity'
-import NewWriter from './components/NewWriter'
-import Register from './components/Register'
-import Login from './components/Login'
-import PageList from './components/PageList'
-import Personal from './components/Personal'
-import LoginOut from './components/LoginOut'
-import Rankinglist from './components/Rankinglist'
-import ChangePassword from './components/ChangePassword'
+// import Index from './components/index/index'
+// import Sign from './components/Sign'
+// import Activity from './components/Activity'
+// import NewWriter from './components/NewWriter'
+// import Register from './components/Register'
+// import Login from './components/Login'
+// import PageList from './components/PageList'
+// import Personal from './components/Personal'
+// import LoginOut from './components/LoginOut'
+// import Rankinglist from './components/Rankinglist'
+// import ChangePassword from './components/ChangePassword'
 
 import axios from 'axios';
 import cookie from 'react-cookies';
@@ -29,19 +29,14 @@ const Personal = lazy(() => import('./components/Personal'));
 const LoginOut = lazy(() => import('./components/LoginOut'));
 const Rankinglist = lazy(() => import('./components/Rankinglist'));
 const PageList = lazy(() => import('./components/PageList'));
+const ChangePassword = lazy(() => import('./components/ChangePassword'));
 
 class App extends Component {
-  constructor() {
-    super();
-  }
 
   async componentDidMount() {
     let token = cookie.load('user');
-    console.log("token:", token);
     if (token) {
-      console.log('yes')
       let result = await axios.post('http://localhost:8100/login', { token });
-      console.log("token登录", result.data);
       let userinfo = result.data.data[0]
       delete userinfo.token
       store.dispatch({ type: 'SET_LOGIN_DATA', payload: { isLogin: true, userinfo: userinfo } })
