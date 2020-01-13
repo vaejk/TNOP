@@ -23,14 +23,14 @@ class Content extends Component {
         this.props.history.push(path)
     }
     componentDidMount() {
-        axios.get('http://192.168.43.3:8100/middle')
+        axios.get('http://localhost:8100/middle')
             .then((res) => {
                 this.setState({
                     api: res.data.data
                 })
             })
             .catch((err) => console.log(err));
-        axios.get('http://192.168.43.3:8100/a?id=1')
+        axios.get('http://localhost:8100/a?id=1')
             .then((res) => {
                 this.setState({
                     api2: res.data.item.arr
@@ -41,7 +41,7 @@ class Content extends Component {
     }
     lisits(obj) {
         let { id, name } = obj
-        axios.get('http://192.168.43.3:8100/a?id=' + id)
+        axios.get('http://localhost:8100/a?id=' + id)
             .then((res) => {
                 this.setState({
                     api2: res.data.item.arr,

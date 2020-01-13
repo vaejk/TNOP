@@ -187,6 +187,7 @@ class Personal extends Component {
         let { userinfo } = this.state;
         store.dispatch({ type: "SET_USERINFO", payload: { userinfo } })
         let result = await axios.post("http://localhost:8100/update", { ...userinfo })
+        console.log(result.data)
         if (result.data.status) {
             message.info('修改成功');
         } else {
@@ -199,6 +200,7 @@ class Personal extends Component {
     }
 
     render() {
+        console.log(this.props)
         let { username, callname, sign, birthday, location, emotion, orientation, gender } = this.props.userinfo
         let { locationlist, showlocationlist } = this.state
         let loc1 = '';

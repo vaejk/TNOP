@@ -33,7 +33,7 @@ class Rankinglist extends Component {
         })
     }
     componentDidMount() {
-        axios.get('http://192.168.43.3:8100/nei')
+        axios.get('http://localhost:8100/nei')
             .then((res) => {
                 this.setState({
                     api: res.data
@@ -58,7 +58,7 @@ class Rankinglist extends Component {
             if (this.state.nums < 4) {
                 console.log(this.state.nums);
                 let page = { page: this.state.nums }
-                axios.post('http://192.168.43.3:8100/cc', page)
+                axios.post('http://localhost:8100/cc', page)
                     .then((res) => {
                         let newarr = this.state.api
                         newarr[this.state.num].arr = newarr[this.state.num].arr.concat(res.data.data)
@@ -85,7 +85,7 @@ class Rankinglist extends Component {
                 <ul className="fentou">
                     {this.state.navs.map(item => {
                         return <li key={item.name} className={this.state.actins === item.name ? 'activity' : null} onClick={this.actin.bind(null, item.name)}>
-                            <a href="###">{item.name}</a>
+                            <p>{item.name}</p>
                             <i></i>
                         </li>
                     })}
@@ -112,6 +112,7 @@ class Rankinglist extends Component {
                         })}
                     </ul>
                 </div>
+                <PublicFoot />
             </>
         )
     }

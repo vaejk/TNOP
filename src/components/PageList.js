@@ -118,7 +118,7 @@ class PageList extends Component {
 
     }
     componentDidMount() {
-        axios.get('http://192.168.43.3:8100/a?id=1')
+        axios.get('http://localhost:8100/a?id=1')
             .then((res) => {
                 this.setState({
                     jiashuju: res.data.item.arr
@@ -126,7 +126,7 @@ class PageList extends Component {
             })
     }
     go(id) {
-        axios.get('http://192.168.43.3:8100/a?id=' + id)
+        axios.get('http://localhost:8100/a?id=' + id)
             .then((res) => {
                 this.setState({
                     jiashuju: res.data.item.arr

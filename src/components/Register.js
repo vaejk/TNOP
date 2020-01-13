@@ -23,6 +23,7 @@ class Register extends Component {
         this.reg = this.reg.bind(this)
         this.validFunction = this.validFunction.bind(this)
         this.checkName = this.checkName.bind(this)
+        this.gologin = this.gologin.bind(this)
     }
 
     async reg() {
@@ -74,10 +75,10 @@ class Register extends Component {
     }
 
     async checkName(rule, value, callback) {
-        let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+([a-zA-Z0-9_-]+)+$");
+        let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$");
         if (reg.test(value)) {
             let result = await axios.post('http://localhost:8100/checkname', { username: value });
-            console.log(result)
+            console.log("result", result)
             if (result.data.code) {
                 this.setState({
                     mail: value
@@ -89,6 +90,10 @@ class Register extends Component {
         } else {
             callback('邮箱地址不正确');
         }
+    }
+
+    gologin() {
+        this.props.history.push('/login')
     }
 
     render() {
@@ -104,10 +109,6 @@ class Register extends Component {
                         <Form.Item>
                             {getFieldDecorator('mail', {
                                 rules: [{ required: true, message: '请输入邮箱地址' },
-                                // {
-                                //     pattern: new RegExp(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/, "g"),
-                                //     message: "邮箱地址不正确"
-                                // },
                                 {
                                     validator: this.checkName
                                 }],
@@ -115,22 +116,7 @@ class Register extends Component {
                                 <Input
                                     prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.5)' }} />}
                                     placeholder="请输入邮箱地址"
-                                // onBlur={async e => {
-                                //     let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$");
-                                //     let value = e.target.value
-                                //     if (reg.test(value)) {
-
-                                //         let value = e.target.value;
-                                //         let result = await axios.post('http://localhost:8100/checkname', { username: value });
-                                //         if (result.data.code) {
-                                //             console.log('success');
-                                //             this.setState({
-                                //                 mail: e.target.value
-                                //             })
-                                //         }
-                                //     }
-                                // }}
-                                />,
+                                />
                             )}
                         </Form.Item>
                         <Form.Item>
@@ -142,7 +128,6 @@ class Register extends Component {
                                 }],
                             })(
                                 <Input
-                                    // suffix={<span style={{ color: '#2ac9ad', float: "right" }}>获取验证码</span>}
                                     prefix={<Icon type="edit" style={{ color: 'rgba(0,0,0,.5)' }} />}
                                     type="password"
                                     placeholder="请输入密码"
@@ -187,7 +172,7 @@ class Register extends Component {
                     <Button className="regbtn" type="link" shape="round" onClick={this.reg}>
                         快速注册
                 </Button>
-                    <p className="register2">已有账号？直接登录</p>
+                    <p className="register2" onClick={this.gologin}>已有账号？直接登录</p>
                     <p className="agreed">登录即代表您已经同意<span className="agreement">用户使用协议</span></p>
                 </div></>
         )

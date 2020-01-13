@@ -127,8 +127,8 @@ class ChangePassword extends Component {
             if (result.data.status) {
                 message.info('修改成功，即将进入个人中心');
                 setTimeout(() => {
-
-                })
+                    this.props.history.push('/personal')
+                }, 2000)
             } else {
                 message.info('修改失败');
             }

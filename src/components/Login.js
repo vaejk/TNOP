@@ -24,6 +24,7 @@ class Login extends Component {
             quick: false
         }
         this.login = this.login.bind(this)
+        this.goreg = this.goreg.bind(this)
     }
 
     componentDidMount() {
@@ -54,6 +55,8 @@ class Login extends Component {
                 }
             );
 
+            console.log('result:', result)
+
             if (result.data.status) {
                 if (quick) {
                     let now = new Date().getTime();
@@ -81,8 +84,11 @@ class Login extends Component {
         message.info('登录失败');
     }
 
+    goreg() {
+        this.props.history.push('/reg')
+    }
+
     render() {
-        console.log(this.props)
         const { getFieldDecorator } = this.props.form;
         return (
             <>
@@ -96,7 +102,7 @@ class Login extends Component {
                                 rules: [
                                     { required: true, message: '请输入邮箱地址' },
                                     {
-                                        pattern: new RegExp(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+([a-zA-Z0-9_-]+)+$/, "g"),
+                                        pattern: new RegExp(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/, "g"),
                                         message: "邮箱地址不正确"
                                     }
                                 ],
@@ -106,7 +112,7 @@ class Login extends Component {
                                     placeholder="请输入邮箱"
                                     onChange={
                                         e => {
-                                            let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+([a-zA-Z0-9_-]+)+$");
+                                            let reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$");
                                             let value = e.target.value
                                             if (reg.test(value)) {
                                                 this.setState({
@@ -145,7 +151,7 @@ class Login extends Component {
                         </Form.Item>
                     </Form>
                     <p className="log">
-                        <span>快速注册</span>
+                        <span onClick={this.goreg}>快速注册</span>
                         <Checkbox onChange={e => { if (e.target.checked) { this.setState({ quick: true }) } }}>七天免登录</Checkbox>
                     </p>
                     <Button className="loginbtn" type="link" shape="round" onClick={this.login}>

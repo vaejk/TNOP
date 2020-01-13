@@ -40,9 +40,17 @@ class App extends Component {
     let token = cookie.load('user');
     if (token) {
       let result = await axios.post('http://localhost:8100/login', { token });
-      let userinfo = result.data.data[0]
-      delete userinfo.token
-      store.dispatch({ type: 'SET_LOGIN_DATA', payload: { isLogin: true, userinfo: userinfo } })
+      let userinfo = null;
+      console.log("haha", result.data)
+      let isLogin = false;
+      if (result.data.data.length) {
+        userinfo = result.data.data[0];
+        delete userinfo.token;
+        isLogin = true;
+      } else {
+        cookie.remove('user')
+      }
+      store.dispatch({ type: 'SET_LOGIN_DATA', payload: { isLogin: isLogin, userinfo: userinfo } })
     }
   }
 
@@ -57,7 +65,7 @@ class App extends Component {
             <Route path='/sign' component={Sign} />
             <Route path='/activity' component={Activity} />
             <Route path='/new' component={NewWriter} />
-            <Route path='/content/:id' component={Content} />
+            <Route path='/content/:name' component={Content} />
             <Route path='/reg' component={Register} />
             <Route path='/Detail/:id' component={Detail} />
             <Route path='/login' component={Login} />

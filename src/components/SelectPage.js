@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Menu, Pagination, Input } from 'antd';
+import { Pagination, Input } from 'antd';
 import Head from './Head'
 import '../scss/PageList.scss';
 import 'antd/dist/antd.css';
@@ -202,7 +202,7 @@ class SelectPage extends Component {
 
     async search(value) {
         if (value.trim()) {
-            let result = await axios.post('http://192.168.43.3:8100/chaxuns', { value })
+            let result = await axios.post('http://localhost:8100/chaxuns', { value })
             if (result.data.status) {
                 this.setState({
                     datalist: result.data.data,

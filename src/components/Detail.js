@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { withRouter } from 'react-router-dom';
 import PublicFoot from './PublicFoot';
 import 'antd/dist/antd.css';
 import Head from './Head';
 import axios from 'axios';
 import '../scss/detail.scss';
+import { connect } from 'react-redux';
 
 class Detail extends Component {
     constructor() {
@@ -38,8 +39,8 @@ class Detail extends Component {
                 }
             ],
             show: false,
-            api: [],
-            id: 0
+            api: []
+            , id: 0
         }
         this.show = this.show.bind(this);
         this.go = this.go.bind(this);
@@ -50,12 +51,22 @@ class Detail extends Component {
             show: !show
         })
     }
-    go(id) {
-        this.props.history.push('/content/' + id)
+    go() {
+        let isLogin = this.props.isLogin;
+        if (isLogin) {
+            let { title: name } = this.state.api;
+            this.props.history.push('/content/' + name)
+        } else {
+            message.info('请登录后开始阅读');
+            setTimeout(() => {
+                this.props.history.push('/login')
+            }, 2000)
+        }
     }
     componentDidMount() {
         let id = { "id": this.props.match.params.id * 1 };
-        axios.post('http://192.168.43.3:8100/xiangqings', id)
+
+        axios.post('http://localhost:8100/xiangqings', id)
             .then((res) => {
                 this.setState({
                     api: res.data.data[0],
@@ -65,7 +76,10 @@ class Detail extends Component {
 
     }
     render() {
-        let { cataloglist, update } = this.state
+        let {
+            // cataloglist,
+            update
+        } = this.state
         let { images, title, author, tag1, jieshao, zhangjie1, zhangjie2, id } = this.state.api
         return (
             <>
@@ -76,7 +90,7 @@ class Detail extends Component {
                         // style={{background- image: "url(../images/1.jpg)"}}
                         ></div>
                         <div className="main">
-                            <img src={images} />
+                            <img src={images} alt="" />
                             <div className="text">
                                 <h3>{title}</h3>
                                 <p>{author}</p>
@@ -114,15 +128,15 @@ class Detail extends Component {
                                     )
                                 })
                             } */}
-                                <li className="clist" key={1} onClick={this.go.bind(null, this.state.id)}>
-                                    <img src={images} />
+                                <li className="clist" key={1} onClick={this.go}>
+                                    <img src={images} alt="" />
                                     <div className="ctext">
                                         <h4>{zhangjie1}</h4>
                                         <p>{jieshao}</p>
                                     </div>
                                 </li>
                                 <li className="clist" key={2}>
-                                    <img src={images} />
+                                    <img src={images} alt="" />
                                     <div className="ctext">
                                         <h4>{zhangjie2}</h4>
                                         <p>{jieshao}</p>
@@ -151,5 +165,10 @@ class Detail extends Component {
         )
     }
 }
+const mapStateToProps = function (state) {
+    return { isLogin: state.isLogin }
+}
+
+Detail = connect(mapStateToProps)(Detail);
 Detail = withRouter(Detail)
 export default Detail
