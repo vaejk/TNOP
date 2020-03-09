@@ -36,6 +36,7 @@ class Content extends Component {
                     api2: res.data.item.arr
                 })
             })
+
             .catch((err) => console.log(err));
 
     }
